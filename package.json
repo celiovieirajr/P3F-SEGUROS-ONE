@@ -1,0 +1,13 @@
+{
+  "name": "p3f-seguros-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional P3F Seguros e Benefícios — página de conversão para WhatsApp.",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/css/input.css -o ./dist/css/output.css --watch",
+    "build": "tailwindcss -i ./src/css/input.css -o ./dist/css/output.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
+  }
+}
