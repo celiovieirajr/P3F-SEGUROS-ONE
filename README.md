@@ -8,7 +8,7 @@ levar o visitante a abrir uma conversa no WhatsApp com contexto.
 
 ```
 p3f-site/
-├── index.html            # página principal (11 seções do mapa do briefing)
+├── index.html            # página principal (hero, quem somos, método, soluções, seguradoras, FAQ, contato)
 ├── privacidade.html       # política de privacidade (LGPD)
 ├── termos.html            # termos de uso
 ├── cookies.html           # política de cookies
@@ -21,11 +21,16 @@ p3f-site/
 │   │       ├── menu.js      # menu mobile + header fixo
 │   │       ├── faq.js       # accordion de perguntas frequentes
 │   │       ├── reveal.js    # animação suave ao rolar (respeita prefers-reduced-motion)
+│   │       ├── carousel.js  # carrossel do hero (autoplay, setas, pontos, swipe)
+│   │       ├── whatsapp.js  # links wa.me com mensagem pronta por produto
+│   │       ├── contact-form.js # formulário que abre o WhatsApp com os dados preenchidos
 │   │       └── cookies.js   # banner de consentimento LGPD (aceitar/recusar)
 │   └── assets/
 │       └── img/
 │           ├── logo-p3f-seguros.png  # logo oficial (não alterada, conforme solicitado)
-│           └── favicon.ico
+│           ├── favicon.ico
+│           ├── hero/          # fotos do carrossel e dos cards de Soluções
+│           └── logos/         # logos das seguradoras e operadoras parceiras
 ├── dist/
 │   └── css/
 │       └── output.css     # CSS compilado pelo Tailwind (gerado via `npm run build`)
@@ -55,8 +60,11 @@ python -m http.server 5173
 
 - **Página única de conversão**, sem loja virtual, sem área de cliente — todo CTA
   leva ao WhatsApp `(18) 99649-1777` com mensagem pré-escrita por seção/produto.
-- **Sem blog, depoimentos ou logos de seguradoras** neste lançamento (reservado para
-  fase 2, conforme página 10 do briefing). O espaço de parceiros já existe, vazio.
+- **Sem blog ou depoimentos** neste lançamento (reservado para fase 2, conforme
+  página 10 do briefing).
+- **Logos das seguradoras** em faixa animada. Cada logo tem um `width` no HTML
+  calculado como `60px × √(largura/altura)`, para todos ocuparem a mesma área
+  visual independente do formato. Ao trocar ou incluir um logo, recalcule o `width`.
 - **FAQ no lugar do blog**, respondendo as dúvidas mais comuns (é seguradora?,
   custo, cobertura nacional, dados/LGPD).
 - **SUSEP, CNPJ e políticas visíveis** no rodapé e no hero, deixando claro que a
@@ -65,9 +73,11 @@ python -m http.server 5173
   cookie não essencial é carregado antes do consentimento (ver `cookies.js`).
 - **Logo não foi alterada** — mantida a arte atual (`logo-p3f-seguros.png`),
   conforme pedido do cliente enquanto o estudo de marca não é aprovado.
-- **Sem fotos de banco de imagem**: o site atual em produção não usa fotos; o
-  layout manteve a estética limpa em azul-marinho/dourado para não introduzir
-  imagens de terceiros sem licença aprovada pelo cliente.
+- **Fotos** no carrossel do hero e nos cards de Soluções (`src/assets/img/hero/`).
+- **Ícones do hero** levam ao card do produto em Soluções (`#solucao-*`), com
+  destaque dourado ao chegar.
+- **Textos institucionais** (título, Missão, Visão, Valores e FAQ de custo) seguem o
+  feedback do cliente de 09/10/2026 — ver `docs/feedback-2026-10-09-jader.md`.
 
 ## Paleta oficial
 
