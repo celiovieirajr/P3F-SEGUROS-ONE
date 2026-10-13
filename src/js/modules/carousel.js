@@ -5,6 +5,8 @@ export function initCarousel() {
   const slides = [...root.querySelectorAll("[data-slide]")];
   const dots = [...root.querySelectorAll("[data-dot]")];
   const INTERVAL = 6000;
+  // O slide 1 traz o título e os ícones clicáveis; precisa de mais tempo na tela.
+  const FIRST_SLIDE_INTERVAL = 10000;
   let index = 0;
   let timer = null;
 
@@ -24,11 +26,11 @@ export function initCarousel() {
   function start() {
     stop();
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    timer = setInterval(() => show(index + 1), INTERVAL);
+    timer = setTimeout(() => { show(index + 1); start(); }, index === 0 ? FIRST_SLIDE_INTERVAL : INTERVAL);
   }
 
   function stop() {
-    if (timer) clearInterval(timer);
+    if (timer) clearTimeout(timer);
     timer = null;
   }
 
@@ -38,12 +40,15 @@ export function initCarousel() {
 
   root.addEventListener("mouseenter", stop);
   root.addEventListener("mouseleave", start);
+  root.addEventListener("focusin", stop);
+  root.addEventListener("focusout", start);
 
   let startX = 0;
-  root.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+  root.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; stop(); }, { passive: true });
   root.addEventListener("touchend", (e) => {
     const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 40) { show(index + (dx < 0 ? 1 : -1)); start(); }
+    if (Math.abs(dx) > 40) show(index + (dx < 0 ? 1 : -1));
+    start();
   });
 
   show(0);

@@ -6,7 +6,7 @@
 | **Site analisado** | https://p3-f-seguros-one.vercel.app (commit `884f3a3`) |
 | **Arquivo principal** | [`index.html`](../index.html) |
 | **Data da análise** | 13/10/2026 |
-| **Status** | Proposta — nada implementado ainda |
+| **Status** | Itens 1–14 implementados (PR #1). Ajustes finos de logos, Método no mobile e autoplay do hero feitos depois. Pendem de resposta do cliente: "estudo" × "diagnóstico" e verbos dos botões de Soluções (E6) |
 
 Este documento cruza cada ponto do feedback com o código atual do site, mostra o
 que muda, onde muda e o que ainda precisa de confirmação do cliente antes de
