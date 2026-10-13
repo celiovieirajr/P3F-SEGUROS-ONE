@@ -97,6 +97,34 @@
     .hero-fade, .hero-tile { opacity: 1; animation: none !important; }
     .hero-kenburns { animation: none; }
   }
+
+  /* Ícones do hero: levam ao card do produto em Soluções. */
+  .hero-tile-link {
+    @apply rounded-2xl focus-visible:outline-none;
+  }
+  .hero-tile-icon {
+    @apply transition duration-300 ease-out;
+  }
+  .hero-tile-link:hover .hero-tile-icon,
+  .hero-tile-link:focus-visible .hero-tile-icon {
+    @apply -translate-y-1 border-gold bg-white/20 text-gold;
+  }
+  .hero-tile-link:focus-visible .hero-tile-icon {
+    @apply ring-2 ring-gold ring-offset-2 ring-offset-navy-deep;
+  }
+
+  /* Card de Soluções em destaque quando aberto por um ícone do hero. */
+  .solution-card:target {
+    animation: solution-target 1.8s ease-out;
+  }
+  @keyframes solution-target {
+    0%, 40% { box-shadow: 0 0 0 4px theme("colors.gold.DEFAULT"); }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-tile-icon { transition: none; }
+    .solution-card:target { animation: none; box-shadow: 0 0 0 3px theme("colors.gold.DEFAULT"); }
+  }
 }
 
 @layer components {
@@ -123,8 +151,10 @@
   .brand-item {
     @apply flex h-20 min-w-[11rem] shrink-0 items-center justify-center rounded-xl bg-white px-6;
   }
+  /* A largura de cada logo vem do atributo width no HTML (60px × √proporção),
+     para que todos ocupem a mesma área visual independente do formato. */
   .brand-item img {
-    @apply max-h-9 w-auto max-w-[9rem] object-contain;
+    @apply h-auto max-h-[3.75rem] max-w-none object-contain;
   }
   @keyframes brand-scroll {
     from { transform: translateX(0); }
