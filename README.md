@@ -65,6 +65,9 @@ python -m http.server 5173
 - **Logos das seguradoras** em faixa animada. Cada logo tem um `width` no HTML
   calculado como `60px × √(largura/altura)`, para todos ocuparem a mesma área
   visual independente do formato. Ao trocar ou incluir um logo, recalcule o `width`.
+  Use a proporção da **área visível** do desenho, não a do arquivo: se o SVG/PNG tiver
+  margem transparente (como o da Mapfre), divida o `width` calculado pela fração da
+  largura que o desenho realmente ocupa dentro do arquivo.
 - **FAQ no lugar do blog**, respondendo as dúvidas mais comuns (é seguradora?,
   custo, cobertura nacional, dados/LGPD).
 - **SUSEP, CNPJ e políticas visíveis** no rodapé e no hero, deixando claro que a

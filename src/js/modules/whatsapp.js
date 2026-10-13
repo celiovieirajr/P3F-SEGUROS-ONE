@@ -17,10 +17,10 @@ const WHATSAPP_PHONE = "5518996491777";
 /** Uma mensagem fixa por categoria — única fonte de verdade dos textos. */
 const WHATSAPP_TEMPLATES = {
   geral: "Olá! Vim pelo site da P3F Seguros e gostaria de mais informações.",
-  vida: "Olá! Quero um estudo gratuito para Seguro de Vida.",
-  saude: "Olá! Quero um estudo gratuito para Saúde e Odonto.",
-  previdencia: "Olá! Quero um estudo gratuito para Previdência.",
-  consorcio: "Olá! Quero um estudo gratuito para Consórcio.",
+  vida: "Olá! Quero um diagnóstico gratuito para Seguro de Vida.",
+  saude: "Olá! Quero um diagnóstico gratuito para Saúde e Odonto.",
+  previdencia: "Olá! Quero um diagnóstico gratuito para Previdência.",
+  consorcio: "Olá! Quero um diagnóstico gratuito para Consórcio.",
 };
 
 /** Monta a URL final do wa.me a partir de uma mensagem já pronta. */
