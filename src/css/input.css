@@ -71,6 +71,19 @@
   .hero-dot.is-active {
     @apply w-8 bg-white;
   }
+  /* Área de toque maior (24px de altura) sem mudar o desenho da bolinha. */
+  .hero-dot {
+    position: relative;
+  }
+  .hero-dot::after {
+    content: "";
+    position: absolute;
+    inset: -8px -4px;
+  }
+  /* Evita o header fixo cobrir o campo com erro ao focar. */
+  [data-contact-form] :is(input, select, textarea) {
+    scroll-margin-top: 7rem;
+  }
   .hero-fade, .hero-tile {
     opacity: 0;
   }
